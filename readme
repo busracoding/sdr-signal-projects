@@ -1,0 +1,57 @@
+# SDR Signal Lab 📡🎧  
+*Real-time AM/FM signal generation, reception and analysis using Python, GNU Radio, and ADALM-PLUTO (AD9361)*
+
+---
+
+## 📍 Overview
+
+This repository contains a collection of signal processing experiments and simulations using **Software Defined Radio (SDR)**, specifically the **ADALM-PLUTO (AD9361)** device.  
+The aim is to explore **real-time transmission, reception, modulation, and spectral analysis** of RF signals in Python and GNU Radio environments.
+
+---
+
+## 💻 Features
+
+- 🔊 **1 kHz – 6 kHz audio signal generation**
+- 🌀 **Sweep modulation and chirp synthesis**
+- 📡 **AM signal transmission using SDR TX (centered at 435 MHz)**
+- 🎧 **Real-time signal reception using SDR RX**
+- 📈 **FFT spectrum analysis**
+- 🌈 **Spectrogram (time-frequency) visualization**
+- 🐍 Fully implemented in **Python (pyadi-iio, NumPy, matplotlib, SciPy)**  
+- 🧱 Replicated in **GNU Radio Companion** for live DSP and GUI
+
+---
+
+## 🧪 Example Outputs
+
+| AM Sweep Signal | FFT & Spectrogram |
+|-----------------|-------------------|
+| ![](images/am_waveform.png) | ![](images/sweep_fft_spec.png) |
+
+---
+
+## 🧰 Tools & Libraries
+
+- [Analog Devices pyadi-iio](https://github.com/analogdevicesinc/pyadi-iio)  
+- GNU Radio Companion (GRC)
+- Python 3.8+
+- NumPy, SciPy, matplotlib, pyadiiio
+- ADALM-PLUTO SDR (ADI AD9361)
+
+---
+
+## 📂 Project Structure
+
+```bash
+sdr-signal-lab/
+├── sweep_am_analysis.py         # Python-based AM sweep TX/RX + FFT
+├── basic_am_transmit.py         # 1 kHz AM tone generation
+├── waterfall_plot.py            # Spectrogram plot utility
+├── gnuradio/
+│   ├── am_tx_rx_loopback.grc    # GNU Radio flowgraph
+│   └── fm_tx_rx_demo.grc
+├── images/
+│   ├── sweep_fft_spec.png
+│   └── am_waveform.png
+└── README.md
