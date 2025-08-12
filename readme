@@ -1,33 +1,50 @@
 # SDR Signal Lab 📡🎧  
-*Real-time AM/FM signal generation, reception and analysis using Python, GNU Radio, and ADALM-PLUTO (AD9361)*
+*Real-time RF signal generation, reception, beamforming, and spectral analysis using Python, GNU Radio, and ADALM-PLUTO (AD9361)*
 
 ---
 
 ## 📍 Overview
 
-This repository contains a collection of signal processing experiments and simulations using **Software Defined Radio (SDR)**, specifically the **ADALM-PLUTO (AD9361)** device.  
-The aim is to explore **real-time transmission, reception, modulation, and spectral analysis** of RF signals in Python and GNU Radio environments.
+This repository contains a collection of **Software Defined Radio (SDR)** experiments using the **ADALM-PLUTO (AD9361)** device.  
+It includes **real-time RF transmission/reception, beamforming algorithms, spectral analysis, and signal visualization** in both Python and GNU Radio environments.
+
+The goal is to provide a modular set of tools for:
+- RF signal generation & reception  
+- AM/FM modulation/demodulation  
+- Direction of Arrival (DoA) & beamforming experiments  
+- Time–frequency visualizations (waterfall & spectrogram)  
 
 ---
 
 ## 💻 Features
 
-- 🔊 **1 kHz – 6 kHz audio signal generation**
-- 🌀 **Sweep modulation and chirp synthesis**
-- 📡 **AM signal transmission using SDR TX (centered at 435 MHz)**
-- 🎧 **Real-time signal reception using SDR RX**
-- 📈 **FFT spectrum analysis**
-- 🌈 **Spectrogram (time-frequency) visualization**
-- 🐍 Fully implemented in **Python (pyadi-iio, NumPy, matplotlib, SciPy)**  
-- 🧱 Replicated in **GNU Radio Companion** for live DSP and GUI
+- **Signal Generation & Transmission**
+  - AM/FM tone generation (1 kHz – 6 kHz audio)
+  - Chirp & sweep modulation synthesis
+  - TX with SDR (custom center frequency, bandwidth, gain)
+
+- **Signal Reception & Analysis**
+  - Real-time FFT spectrum visualization
+  - Waterfall & spectrogram analysis
+  - Peak detection in selected frequency ranges
+
+- **Beamforming & DoA Estimation**
+  - Conventional Delay-and-Sum Beamforming
+  - Null Steering
+  - MUSIC algorithm for high-resolution DoA estimation
+  - Polar and 2D heatmap visualizations
+
+- **Implementation Platforms**
+  - Python (NumPy, SciPy, matplotlib, pyadi-iio)
+  - GNU Radio Companion (GRC GUI-based DSP)
 
 ---
 
 ## 🧪 Example Outputs
 
-| AM Sweep Signal | FFT & Spectrogram |
-|-----------------|-------------------|
-| ![](images/am_waveform.png) | ![](images/sweep_fft_spec.png) |
+| AM Sweep Signal | FFT & Spectrogram | Beamforming Polar Plot |
+|-----------------|-------------------|------------------------|
+| ![](images/am_waveform.png) | ![](images/sweep_fft_spec.png) | ![](images/beamforming_polar.png) |
 
 ---
 
@@ -36,7 +53,7 @@ The aim is to explore **real-time transmission, reception, modulation, and spect
 - [Analog Devices pyadi-iio](https://github.com/analogdevicesinc/pyadi-iio)  
 - GNU Radio Companion (GRC)
 - Python 3.8+
-- NumPy, SciPy, matplotlib, pyadiiio
+- NumPy, SciPy, matplotlib
 - ADALM-PLUTO SDR (ADI AD9361)
 
 ---
@@ -45,13 +62,25 @@ The aim is to explore **real-time transmission, reception, modulation, and spect
 
 ```bash
 sdr-signal-lab/
-├── sweep_am_analysis.py         # Python-based AM sweep TX/RX + FFT
-├── basic_am_transmit.py         # 1 kHz AM tone generation
-├── waterfall_plot.py            # Spectrogram plot utility
+├── am_fm/
+│   ├── basic_am_transmit.py
+│   ├── sweep_am_analysis.py
+│   └── fm_tx_rx_demo.py
+├── reception_analysis/
+│   ├── fft_spectrum.py
+│   ├── waterfall_plot.py
+│   └── peak_detection.py
+├── beamforming/
+│   ├── doa_music.py
+│   ├── conventional_bf.py
+│   ├── null_steering.py
+│   └── beamforming_polar_plot.py
 ├── gnuradio/
-│   ├── am_tx_rx_loopback.grc    # GNU Radio flowgraph
-│   └── fm_tx_rx_demo.grc
+│   ├── am_tx_rx_loopback.grc
+│   ├── fm_tx_rx_demo.grc
+│   └── beamforming_demo.grc
 ├── images/
+│   ├── am_waveform.png
 │   ├── sweep_fft_spec.png
-│   └── am_waveform.png
+│   └── beamforming_polar.png
 └── README.md
